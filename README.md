@@ -15,12 +15,15 @@
 
 ## Rule
 - 매일 한 문제씩 풀이한다.
+  - 월.수.금: [BOJ](https://www.acmicpc.net/)
+  - 화.목.토: [Programmers](https://programmers.co.kr/learn/challenges)
 - 풀이 후 자신의 이름을 딴 `Branch`에 `Pull Request`를 보낸다. 
 - `Code Review`는 해당 `Pull Request`로 진행한다.
 - 문제를 못 풀었을 경우
   - 문제 접근 방식, 적용 개념 등을 `주석`으로 최대한 적어서 업로드
 
 ## Convention
+- 주석 : 아이디어 도출 과정, 개념 적용 과정
 - File Naming
   - 요소 간 구분 : `-` (hyphen)
   - 요소 내 공백 : `_` (underbar)
