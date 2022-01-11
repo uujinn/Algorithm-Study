@@ -36,16 +36,18 @@
 
 ```
 # Type
-- code  : 코드를 제출할 때
-- fix   : 틀린 문제를 맞았을 때
-- docs  : README를 수정할 때
-- refac : 코드를 수정할 때
+- Pass  : 정답 코드를 제출할 때
+- Non-Pass : 오답 코드를 제출할 때
+- Fix   : 틀린 문제를 맞았을 때
+- Update : 코드를 수정할 때
+- Delete : 코드를 삭제할 때
+- Docs  : README를 수정할 때
 - etc
 
 
 # example
-"code: Boj 10171 고양이"
-"refac: Change input() to readline()"
+"Pass: Boj 10171 고양이"
+"Update: Boj 10171 고양이"
 ```
 
 ## Plan
