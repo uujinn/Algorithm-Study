@@ -32,7 +32,6 @@
   - [Programmers-문제번호] 이름
   - [Baekjoon-문제번호] 이름
 - Commit Message
-  - 커밋 내용 첫 글자는 `대문자`
 
 ```
 # Type
@@ -45,7 +44,7 @@
 - etc
 
 
-# example
+# Example
 "Pass: Boj 10171 고양이"
 "Update: Boj 10171 고양이"
 ```
