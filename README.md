@@ -30,7 +30,7 @@
   - `문제번호-문제_이름-작성자.py` ex. 10171-고양이-YJ.py
 - Pull Request
   - [Programmers-문제번호] 이름
-  - [Baekjoon-문제번호] 이름
+  - [BOJ-문제번호] 이름
 - Commit Message
 
 ```
@@ -44,8 +44,8 @@
 - Etc
 
 # Example
-"Pass: Boj 10171 고양이"
-"Update: Boj 10171 고양이"
+"Pass: BOJ 10171 고양이"
+"Update: BOJ 10171 고양이"
 ```
 
 ## Plan
