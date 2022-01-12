@@ -43,7 +43,6 @@
 - Docs  : README를 수정할 때
 - Etc
 
-
 # Example
 "Pass: Boj 10171 고양이"
 "Update: Boj 10171 고양이"
