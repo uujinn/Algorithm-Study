@@ -18,7 +18,8 @@
   - 월.수.금: [BOJ](https://www.acmicpc.net/)
   - 화.목.토: [Programmers](https://programmers.co.kr/learn/challenges)
 - 풀이 후 자신의 이름을 딴 `Branch`에 `Pull Request`를 보낸다. 
-- `Code Review`는 해당 `Pull Request`로 진행한다.
+- `Code Review`는 해당 `Pull Request`를 통해 진행한다.
+- 타인이 작성한 `Comments` 확인 후 스스로 `Merge`한다.
 - 문제를 못 풀었을 경우
   - 문제 접근 방식, 적용 개념 등을 `주석`으로 최대한 적어서 업로드
 
@@ -29,8 +30,8 @@
   - 요소 내 공백 : `_` (underbar)
   - `문제번호-문제_이름-작성자.py` ex. 10171-고양이-YJ.py
 - Pull Request
-  - [Programmers-문제번호] 이름
-  - [BOJ-문제번호] 이름
+  - [날짜] 이름
+  - [날짜] 이름
 - Commit Message
 
 ```
@@ -44,17 +45,8 @@
 - Etc
 
 # Example
-"Pass: BOJ 10171 고양이"
-"Update: BOJ 10171 고양이"
+"Pass: Boj 10171 고양이"
+"Update: Boj 10171 고양이"
 ```
 
 ## Plan
-| 주차 | 유형 | 챕터명 |
-| :--: | :--: | :--: |
-| 1주차 | Greedy & Implementation | 그리디 & 구현 |
-| 2주차 | DFS & BFS | DFS/BFS |
-| 3주차 | Sorting | 정렬 |
-| 4주차 | Binary Search | 이진 탐색 |
-| 5주차 | Dynamic Programming | 다이나믹 프로그래밍 |
-| 6주차 | Shortest Path | 최단 경로 |
-| 7주차 | Graph | 그래프 이론 |
