@@ -10,7 +10,7 @@
 
 
 ## Members
-| <img src='https://user-images.githubusercontent.com/70887135/148939967-f16d5dd0-600d-4627-9575-64c26297df93.png' width='120px' height='120px' alt='avatar'/><br/><b>[나연](https://github.com/n-y-kim)</b> |  <img src='https://user-images.githubusercontent.com/70887135/148940486-914fe348-7ac5-4319-bbad-4e4545d6d7a7.png' width='120px' height='120px' alt='avatar'/><br/><b>[유진](https://github.com/uujinn)</b> | <img src='https://avatars.githubusercontent.com/u/69028785?v=4' width='120px' height='120px' alt='avatar'/><br/><b>[민희](https://github.com/MinHeeCha)</b> |
+| <img src='https://avatars.githubusercontent.com/u/76769919?v=4' width='120px' height='120px' alt='avatar'/><br/><b>[나연](https://github.com/n-y-kim)</b> |  <img src='https://user-images.githubusercontent.com/70887135/148940486-914fe348-7ac5-4319-bbad-4e4545d6d7a7.png' width='120px' height='120px' alt='avatar'/><br/><b>[유진](https://github.com/uujinn)</b> | <img src='https://avatars.githubusercontent.com/u/69028785?v=4' width='120px' height='120px' alt='avatar'/><br/><b>[민희](https://github.com/MinHeeCha)</b> |
 | :---: | :---: | :---: |
 
 ## Rule
