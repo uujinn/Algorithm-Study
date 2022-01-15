@@ -10,10 +10,7 @@ def solution(new_id):
     while len(step_1_answer) != 0:
         popped = step_1_answer.pop()
         
-        alphabet_check = ord(popped) >= 97 and ord(popped) <= 122
-        number_check = ord(popped) >= 48 and ord(popped) <= 57
-        
-        if popped in special_char or alphabet_check or number_check:
+        if popped in special_char or popped.isalpha() or popped.isalnum():
             if popped == '.' and behind_letter == '.': continue
             else: answer.append(popped)
         
