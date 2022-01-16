@@ -10,8 +10,8 @@
 
 
 ## Members
-| <img src='https://avatars.githubusercontent.com/u/76769919?v=4' width='120px' height='120px' alt='avatar'/><br/><b>[나연](https://github.com/n-y-kim)</b> |  <img src='https://user-images.githubusercontent.com/70887135/148940486-914fe348-7ac5-4319-bbad-4e4545d6d7a7.png' width='120px' height='120px' alt='avatar'/><br/><b>[유진](https://github.com/uujinn)</b> | <img src='https://avatars.githubusercontent.com/u/69028785?v=4' width='120px' height='120px' alt='avatar'/><br/><b>[민희](https://github.com/MinHeeCha)</b> |
-| :---: | :---: | :---: |
+| <img src='https://avatars.githubusercontent.com/u/76769919?v=4' width='120px' height='120px' alt='avatar'/><br/><b>[나연](https://github.com/n-y-kim)</b> |  <img src='https://user-images.githubusercontent.com/70887135/148940486-914fe348-7ac5-4319-bbad-4e4545d6d7a7.png' width='120px' height='120px' alt='avatar'/><br/><b>[유진](https://github.com/uujinn)</b> | <img src='https://avatars.githubusercontent.com/u/69028785?v=4' width='120px' height='120px' alt='avatar'/><br/><b>[민희](https://github.com/MinHeeCha)</b> | <img src='https://avatars.githubusercontent.com/u/97775368?v=4' width='120px' height='120px' alt='avatar'></br><b>[가현](https://github.com/0ee9)</b>
+| :---: | :---: | :---: | :---: |
 
 ## Rule
 - 매일 한 문제씩 풀이한다.
