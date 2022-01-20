@@ -1,6 +1,7 @@
 from sys import stdin
+from collections import deque
 
-q = []
+q = deque()
 num = int(stdin.readline())
 
 for i in range(num):
@@ -12,8 +13,8 @@ for i in range(num):
         if len(q) == 0:
             print(-1)
         else:
-            print(q[0])
-            q.remove(q[0])
+            # print(q[0])
+            print(q.popleft())
     elif str[0] == 'size':
         print(len(q))
     elif str[0] == 'empty':
