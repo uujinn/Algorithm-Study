@@ -1,18 +1,18 @@
 from sys import stdin
 N = int(stdin.readline())
 expression = str(stdin.readline().rstrip())
-answer = ""
 temp = []
 temp_num = {}
 for i in range(N):
     temp_num[chr(i + 65)] = str(stdin.readline().rstrip())
 
-for i in range(len(expression)-1, -1, -1):
-    if not expression[i].isalpha(): #연산자
-        temp.append(expression[i])
+for e in expression:
+    if e.isalpha():
+        temp.append(temp_num[e])
     else:
-        answer += temp_num[expression[i]]
-        if temp:
-            answer += temp.pop()
+        back = temp.pop()
+        front = temp.pop()
+        
+        temp.append(eval(str(front) + e + str(back)))
 
-print('%0.2f'%(eval(answer[::-1])))
+print('%0.2f'%(temp[-1]))
