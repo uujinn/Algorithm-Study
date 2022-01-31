@@ -1,22 +1,24 @@
 from sys import stdin
 
 expression = stdin.readline().rstrip()
-sticks = [] # 막대기 담아놓을 스택
+sticks = 0
 result = 0
 
-for i in range(len(expression)):
+index = 0
 
-    if expression[i] == "(": 
-        if expression[i+1] == ")": # 레이저 만나면 담아져 있는 막대기 갯수 + 1
-            sticks = list(map(lambda x: x + 1, sticks))
-        else: # 처리 할 막대기 추가
-            sticks.append(1)
-            
-    elif expression[i] == ")": 
-        if expression[i-1] == "(": # 레이저였다면
-            pass   
-        elif sticks: # 해당 막대기 처리 끝남
-            result += sticks.pop() # 막대기 갯수 계산
+for c in expression:
+    if c == "(":
+        if expression[index+1] == ")": # 레이저라면
+            result += sticks
+        else: # 막대기 추가
+            sticks += 1
+    else:
+        if expression[index-1] == "(": # 레이저였다면
+            pass
+        else: # 막대기 끝남
+            sticks -= 1
+            result += 1
 
+    index += 1
 
 print(result)
