@@ -5,11 +5,13 @@ sticks = [] # 막대기 담아놓을 스택
 result = 0
 
 for i in range(len(expression)):
-    if expression[i] == "(": # Case1: 레이저 Case2: 새로운 막대기
-        if expression[i+1] == ")": # Case 1: 담아져 있는 막대기 갯수 + 1 (레이저가 막대기 자름)
+
+    if expression[i] == "(": 
+        if expression[i+1] == ")": # 레이저 만나면 담아져 있는 막대기 갯수 + 1
             sticks = list(map(lambda x: x + 1, sticks))
-        else: # Case2: 처리 할 막대기 추가
-            sticks.append(i)    
+        else: # 처리 할 막대기 추가
+            sticks.append(1)
+            
     elif expression[i] == ")": 
         if expression[i-1] == "(": # 레이저였다면
             pass   
