@@ -1,9 +1,8 @@
-from operator import indexOf
 from sys import stdin
 
 for _ in range(int(stdin.readline())):
     answer = 0
-    
+
     N, M = map(int, stdin.readline().split())
     importance = list(map(int, stdin.readline().split()))
     index = list(range(len(importance)))
