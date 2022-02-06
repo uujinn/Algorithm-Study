@@ -1,11 +1,7 @@
-def solution(participant, completion):
-    participant.sort()
-    completion.sort()
+from collections import Counter
 
-    for par, com in zip(participant, completion):
-        if par != com:
-            return par
-    return participant[-1]
+def solution(participant, completion):
+    return list((Counter(participant) - Counter(completion)).elements()).pop()
         
 
 print(solution(["leo", "kiki", "eden"],	["eden", "kiki"]))
