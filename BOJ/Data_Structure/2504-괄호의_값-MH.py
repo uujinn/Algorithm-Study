@@ -13,7 +13,7 @@ def is_right_bracket(bracket):
     
     return False if stack else True
         
-            
+
             
 def bracket_value(bracket : str) -> int:
     print('recur')
@@ -43,21 +43,17 @@ def bracket_value(bracket : str) -> int:
             elif i == 1 and i != len(bracket) - 1:             # left : () or [], right 존재
                 print('1 : ', end='')
                 print(value)
-                
                 answer += (value + bracket_value(bracket[2:]))
                 break
-            
             
             elif i == len(bracket) - 1:         # 짝 괄호가 맨 마지막에 위치하면
                 print('2 : ', end='')
                 print(bracket_value(bracket[1:-1]) * value)
-                
                 answer += (bracket_value(bracket[1:-1]) * value)
                 break
                 
             else:
                 left = bracket[:i + 1]
-                # left = bracket[1:i]             # 양쪽 괄호 벗긴 왼쪽
                 right = bracket[i + 1:]         # 오른쪽
                 print(left)
                 print(right)
@@ -71,10 +67,9 @@ def bracket_value(bracket : str) -> int:
                     
     return answer
         
-# bracket = stdin.readline().rstrip()
-# print(bracket_value(bracket))
+bracket = stdin.readline().rstrip()
+print(bracket_value(bracket) if is_right_bracket(bracket) else 0)
 
-# 올바른 괄호인지 체크
+
 # str = '(()[[]])([])'
-str = '[][]((])'
-print(bracket_value(str) if is_right_bracket(str) else 0)
+# print(bracket_value(str) if is_right_bracket(str) else 0)
