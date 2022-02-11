@@ -3,15 +3,17 @@ from sys import stdin
 stack = []
 num = int(stdin.readline())
 tops = list(map(int, stdin.readline().split()))
-recieve = []
+answer = [0 for i in range(num)]
 
-for i, t in enumerate(tops):    
-    for j in reversed(range(i)):
-        if tops[j] >= t:
-            recieve.append(j + 1)
+for i in range(num):
+    while stack:
+        if stack[-1][1] > tops[i]:
+            answer[i] = stack[-1][0] + 1
             break
-    
-    if len(recieve) - 1 < i:
-        recieve.append(0)
+        else:
+            stack.pop()         # 내 앞의 탑보다 내 높이가 더 높으면 앞의 탑 pop (앞의 탑 필요없어짐)
+    stack.append([i, tops[i]])
 
-print(recieve)
+print(*answer)
+
+# 876ms
