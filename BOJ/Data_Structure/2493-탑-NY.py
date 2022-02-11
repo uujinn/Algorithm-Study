@@ -1,16 +1,13 @@
 from sys import stdin
 N = int(stdin.readline())
 towers = list(map(int, stdin.readline().split()))
+maximum = towers[0]
 
-def recursion(num, i):
-    if num <= towers[i-1]: 
-        print(i, '', end='')
-        return
-    elif i == 1:
-        print(0, "", end='')
-    else: 
-        recursion(num, i-1)
-
-print(0, "", end="")
-for i in range(1, len(towers)):
-    recursion(towers[i], i)
+for i, tower in enumerate(towers):
+    if tower >= maximum:
+        maximum = tower
+        print(0, "", end="")
+    elif tower < towers[i-1]:
+        print(i, "", end="")
+    elif tower < maximum:
+        print(towers.index(maximum)+1, "", end="")
