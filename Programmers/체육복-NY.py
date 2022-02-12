@@ -1,6 +1,11 @@
 def solution(n, lost, reserve):
     lost = sorted(lost)
     reserve = sorted(reserve)
+    for l in lost[:]:
+        if l in reserve: 
+            lost.remove(l)
+            reserve.remove(l)
+    
     for r in reserve[::-1]:
         if not lost: break
         else:
