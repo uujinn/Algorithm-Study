@@ -5,12 +5,15 @@ def solution(n, lost, reserve):
         if l in reserve: 
             lost.remove(l)
             reserve.remove(l)
-    
-    for r in reserve[::-1]:
-        if not lost: break
-        else:
-            if lost[-1] == r or lost[-1] + 1 == r or lost[-1] - 1 == r:
-                lost.pop()
-    return n - len(lost)
+            
+    answer = n - len(lost)
+    index = 0
+    for r in reserve:
+        for i in range(index, len(lost)):
+            if lost[i]==r or lost[i]+1==r or lost[i]-1==r:
+                answer += 1
+                index = i + 1
+                break
+    return answer
 
-print(solution(5, [1,2,4,5], [2, 3, 4]))
+print(solution(5, [2, 4], [1, 3, 5]))
