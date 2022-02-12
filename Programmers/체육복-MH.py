@@ -13,7 +13,3 @@ def solution(n, _lost, _reserve):
     return answer
 
 print(solution(3, [1, 2], [2, 3]))
-
-# 15점이나 받았어요 대박
-# 사실 테스트 케이스 자꾸 틀려서 질문하기 창에서 팁 좀 얻었어요 엉엉..
-# 더 나은 코드를 짜는 그 날까지.. 화이팅..
