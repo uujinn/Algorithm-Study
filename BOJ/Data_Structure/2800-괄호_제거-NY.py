@@ -1,20 +1,29 @@
 from itertools import combinations
 from sys import stdin
-brackets = list(str(stdin.readline()))
-index_cnt = []
-answer = []
-back_cnt = -1
 
-#괄호가 존재하는 인덱스들을 따로 먼저 저장
-for i, bracket in enumerate(brackets):
-    if bracket == '(': 
-        index_cnt.append([i, i])
-        back_cnt += 1
-    elif bracket == ')': 
-        index_cnt[back_cnt][1] = i
-        back_cnt -= 1
+s = stdin.readline().rstrip()
+l = []
+stack = []
+answer = set()
 
-#해당 인덱스들의 조합 경우의 수 계산
+for idx, v in enumerate(list(s)):
+    if v == '(':
+        stack.append(idx) 
+    elif v == ')':
+        start = stack.pop()
+        end = idx
+        l.append([start,end])
+
+for i in range(1,len(l)+1):
+    c = combinations(l,i)
+    for j in c:
+        tmp = list(s)
+        for k in j:
+            start,end = k
+            tmp[start] = ''
+            tmp[end] = ''
+        answer.add(''.join(tmp))
 
 
-#계산된 경우의 수들 정렬해서 출력아
+for i in sorted(list(answer)):
+    print(i)
