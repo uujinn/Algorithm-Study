@@ -1,27 +1,73 @@
 import sys
 input = sys.stdin.readline
 
-str = list(input().rstrip())[::-1]
+x = list(input())
+stack = []
+error = 1 
 
-def cal(first):
-    re = 0
-    while str:
-        s = str.pop()
+for i in x:
+    if i == "(":
+        stack.append(i)
+        cnt = 0
         
-        if s == "(" or s == "[":
-            re += cal(s)
+    elif i == ")":
+        num = 0
+        while len(stack) != 0:
+            a = stack.pop()
+            if a == "(":
+                if cnt == 0:  # ()일 때
+                    stack.append(2)
+                    cnt = 1
+                    error = 0   
+                else:
+                    stack.append(num * 2)
+                    cnt = 1
+                    error = 0
+                break    
+            elif a == '[':
+                print(0)
+                exit(0)
+            else:   # 숫자이면        
+                num += a
+                error = 1
+        if error == 1:
+            print(0)
+            exit(0)
+    elif i == "[":
+        stack.append(i)
+        cnt = 0
+    elif i == "]":
+        num = 0
+        while len(stack) != 0:
             
-        elif first == "(" and s == ")":
-            return 2 * max(1, re)
-        
-        elif first == "[" and s == "]":
-            return 3 * max(1, re)
-    
-    print(0)    # 리스트에 값이 없는데 return 안 되면 바보 괄호
-    sys.exit()
+            a = stack.pop()
+            if a == "[":
+                if cnt == 0:  # ()일 경우
+                    stack.append(3)
+                    cnt = 1
+                else:
+                    stack.append(num * 3)
+                    cnt = 1
+                error = 0
+                break    
+            
+            elif a == '(':
+                print(0)
+                exit(0)
+                
+            else:   # 숫자일 경우
+                num += a
+                error = 1
+                
+        if error == 1:
+            print(0)
+            exit(0)    
+answer = 0   
 
-answer = 0    
-
-while str:
-    answer += cal(str.pop())
+for i in stack:
+    if i == "(" or i == "[":
+        print(0)
+        exit(0)
+    else:
+        answer += i
 print(answer)
