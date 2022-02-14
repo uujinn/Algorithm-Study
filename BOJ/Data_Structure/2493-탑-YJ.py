@@ -13,5 +13,7 @@ for i, tower in enumerate(reversed(towers)):
         else: # 수신 불가 
             break
     indexs.append(index) # 다음 탑 신호 인덱스 추가
+    print(answer)
 
 print(" ".join(map(str, answer)))
+
