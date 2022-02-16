@@ -34,4 +34,5 @@ for s in expression:
 while stack: # 남아있는 연산자 출력
     answer += stack.pop()
 
+
 print(answer)
