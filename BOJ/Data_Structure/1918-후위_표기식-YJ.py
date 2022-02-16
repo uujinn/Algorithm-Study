@@ -1,5 +1,4 @@
 from sys import stdin
-from tabnanny import check
 
 # 연산자 우선순위
 def check_priority(s):
