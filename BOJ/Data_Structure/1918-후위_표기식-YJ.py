@@ -1,5 +1,4 @@
 from sys import stdin
-from tabnanny import check
 
 # 연산자 우선순위
 def check_priority(s):
@@ -33,5 +32,6 @@ for s in expression:
 
 while stack: # 남아있는 연산자 출력
     answer += stack.pop()
+
 
 print(answer)
