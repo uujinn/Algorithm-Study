@@ -1,13 +1,14 @@
 from sys import stdin
 
 answer = 0
+sets = set()
 N, M = map(int, stdin.readline().split())
 
-sets = list(stdin.readline().rstrip() for _ in range(N))
-test = list(stdin.readline().rstrip() for _ in range(M))
+for _ in range(N):
+    sets.add(stdin.readline().rstrip())
 
-for str in test:
-    if str in sets:
+for _ in range(M):
+    if stdin.readline().rstrip() in sets:
         answer += 1
 
 print(answer)
