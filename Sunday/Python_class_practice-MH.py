@@ -18,15 +18,15 @@ class Human:
 class Language:
     default_language = "English"
     
-    def __init__(self) -> None:
+    def __init__(self):     # 인스턴스 메소드 생성 : 인자로 self 키워드 사용
         self.show = "My language is " + self.default_language
     
-    @classmethod
-    def class_my_language(cls):
-        return cls()
+    @classmethod            # 클래스 메소드 생성 : 인스턴스(객체)화 하지 않고 메소드 호출 가능, but 다른 메소드 및 클래스 속성에 접근할 수 있음
+    def class_my_language(cls):     # 인스턴스 메소드(일반적인 함수)가 인자로 self 키워드 사용하는 반면, 클래스 메소드는 cls 키워드 사용
+        return cls()                
     
-    @staticmethod
-    def static_my_language():
+    @staticmethod           # 정적 메소드 생성 : 객체화 하지 않고 메소드 호출 가능, 인스턴스를 통해서도 호출 가능
+    def static_my_language():       # 인스턴스나 클래스를 인자로 받지 않음
         return Language()
     
     def print_language(self):
