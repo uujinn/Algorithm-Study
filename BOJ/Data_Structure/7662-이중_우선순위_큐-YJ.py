@@ -11,10 +11,10 @@ for i in range(int(stdin.readline())): # T
     for i in range(int(stdin.readline())): # K
         command, n = map(str, stdin.readline().rstrip().split())
         if command == "I":
-            if counts.get(int(n)): 
-                counts[int(n)] += 1
-            else:
-                counts[int(n)] = 1
+            # if counts.get(int(n)): 
+            #     counts[int(n)] += 1
+            # else:
+            #     counts[int(n)] = 1
 
             heappush(min_h, int(n))
             heappush(max_h, -int(n)) # 최대 힙은 음수로 넣어줌
