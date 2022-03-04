@@ -1,4 +1,4 @@
-from heapq import heappop, heappush, nlargest
+from heapq import heapify, heappop, heappush, nlargest
 from sys import stdin
 
 h = []
@@ -13,5 +13,6 @@ for _ in range(N):
     
     max_numbers = nlargest(5, h)
 
-print(max_numbers[-1])
-    
+heapify(max_numbers)
+
+print(heappop(max_numbers))
