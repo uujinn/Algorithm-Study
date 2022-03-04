@@ -1,18 +1,15 @@
 from heapq import heapify, heappop, heappush, nlargest
-from sys import stdin
 
 h = []
-N = int(stdin.readline())
-
-max_numbers = []
+N = int(input())
 
 for _ in range(N):
-    numbers = list(map(int, stdin.readline().split()))
+    numbers = list(map(int, input().split()))
     for num in numbers:
         heappush(h, num)
     
-    max_numbers = nlargest(5, h)
+    h = nlargest(N, h)
 
-heapify(max_numbers)
+heapify(h)
 
-print(heappop(max_numbers))
+print(heappop(h))
