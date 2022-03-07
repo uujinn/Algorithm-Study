@@ -16,33 +16,22 @@ for _ in range(int(stdin.readline())):          # T번 반복
             heappush(max_heap, (-val, i))
             deleted[i] = False
             
-        elif min_heap and max_heap and cmd == 'D':
+        elif cmd == 'D':
             if val == -1 and min_heap:             # 최소값 제거
-                min_val = heappop(min_heap)[1]
-                deleted[min_val] = True
+                deleted[min_heap[0][1]] = True
+                heappop(min_heap)
                 
             elif val == 1 and max_heap:            # 최대값 제거
-                max_val = -heappop(max_heap)[1]
-                deleted[max_val] = True
+                deleted[max_heap[0][1]] = True
+                heappop(max_heap)
                     
         while min_heap and deleted[min_heap[0][1]]:
-            # print(heappop(min_heap))
             heappop(min_heap)
         while max_heap and deleted[max_heap[0][1]]:
-            # print(heappop(max_heap))
             heappop(max_heap)
-                    
-        # print('min heap : ', end='')
-        # print(min_heap)
-        # print('max heap : ', end='')
-        # print(max_heap)
-        # print('deleted : ', end='')
-        # print(deleted)
-        # print('-------------')
         
     if not min_heap or not max_heap:
         answer += 'EMPTY\n'
     else:
         answer += (str(-max_heap[0][0]) + ' ' + str(min_heap[0][0]) + '\n')
-        
 print(answer.rstrip())
