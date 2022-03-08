@@ -1,18 +1,15 @@
 from sys import stdin
 from heapq import heappush, heappop
-from tabnanny import check
-
+from collections import defaultdict
 
 for i in range(int(stdin.readline())): # T
     min_h = [] # 최소 힙
     max_h = [] # 최대 힙
 
-    counts = {} # Counter 역할
-    cnt = 0
+    counts = defaultdict(int) # Counter 역할
     for i in range(int(stdin.readline())): # K
         command, n = map(str, stdin.readline().rstrip().split())
         if command == "I":
-            cnt += 1
             counts[int(n)] += 1
 
             heappush(min_h, int(n))
