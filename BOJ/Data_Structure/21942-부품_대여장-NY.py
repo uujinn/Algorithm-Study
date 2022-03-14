@@ -2,7 +2,7 @@ from sys import stdin
 from datetime import datetime
 N, L, F = map(str, stdin.readline().split())
 rents = {}
-fined = []
+fined = {}
 N, F = int(N), int(F)
 days = int(L.split("/")[0])
 hours, minutes = map(int, L.split("/")[1].split(":"))
@@ -15,11 +15,13 @@ for _ in range(N):
         
         cnt = int(((return_t - borrow_t).total_seconds() - total_sec)/60 * F)
         
-        if cnt > 0: fined.append((M, cnt))
+        if cnt > 0:
+            if M in fined: fined[M] += cnt
+            else: fined[M] = cnt
     else:
         rents[(P, M)] = datetime.strptime(date + " " + time, "%Y-%m-%d %H:%M")
         
 if not fined: print(-1)
 else:
-    for f in sorted(fined):
+    for f in sorted(fined.items(), key=lambda x : x[1]):
         print(f[0], f[1])
