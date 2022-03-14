@@ -23,7 +23,23 @@ def isCheck(data):
 
     print(len(result))
 
-# ???????????
-# 엥 for문 하나 더 만들어야 된다
-# 제가 오늘... 시간이 없어서 다 못 짰습니다...
-# 사과드립니다... 주말에 멋진 코드 들고 올게요.. ..
+    for i in range(len(result)):
+        if (i + 1) != 1 and (i + 1) % 10 == 1:
+            print()
+        print(result[i], end=' ')
+    print()
+
+t = int(sys.stdin.readline().rstrip())
+
+for _ in range(t):
+    m = int(input())
+    data = []
+
+    if m % 10 == 0:
+        for _ in range(m // 10):
+            data.extend(list(map(int, sys.stdin.readline().rstrip().split())))
+    else:
+        for _ in range(m // 10 + 1):
+            data.extend(list(map(int, sys.stdin.readline().rstrip().split())))
+
+    isCheck(data)
