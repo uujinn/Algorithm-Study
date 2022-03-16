@@ -1,12 +1,12 @@
 import sys
 sys.setrecursionlimit(100000)
 
-def DFS(num):
-    visit[num] = True
-    for x in graph[num]:
-        if not visit[x]:
-            answer[x] = num
-            DFS(x)
+def DFS(x):
+    visit[x] = True
+    for i in graph[x]:
+        if not visit[i]:
+            answer[i] = x
+            DFS(i)
 
 N = int(input())
 
