@@ -1,23 +1,55 @@
 import sys
-read = sys.stdin.readline
 
-N, L, F = map(str, read().split())
-month_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-limit = int(L[:3])*24*60 + int(L[4:6])*60 + int(L[7:])
-fee = int(F)
-rental = {}
-overdue = {}
+def input():
+    return sys.stdin.readline().rstrip()
 
-for _ in range(int(N)):
-    date, time, item, name = map(str, read().split())
-    rental[name] = rental.get(name, {})
-    year, month, day = map(int, date.split('-'))
-    h, m = map(int, time.split(':'))
-    time_id = (sum(month_days[:month]) + day) * 24 * 60 + h * 60 + m
+def calculate_days_per_month():
+    month_days = {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
+    days = [0]
+    for month, day in month_days.items():
+        days.append(days[month-1] + day)
+    return days
 
-    if rental[name].get(item, 0) == 0:
-    # 빌릴 때
+month_days = calculate_days_per_month()
+
+def change_str(_str):
+    date, time, item, person = _str.split()
+    _, month, day = map(int, date.split('-')) # 년도 필요없음
+    hour, minute = map(int, time.split(':'))
+    return person, item, (month_days[month-1] + day) * 24 * 60 + hour * 60 + minute
+
+def solution(info, deadline_time, F):
+    dic = {}
+    people = {} # 벌금 낼 사람들
+    for data in info:
+        result = -1
+        person, item, time = change_str(data)
+        if person not in dic:
+            dic[person] = {}
+        if item in dic[person]:
+            result = time - dic[person].pop(item)
+        else:
+            dic[person][item] = time
+        if result > deadline_time:
+            if person not in people:
+                people[person] = 0
+            people[person] += (result - deadline_time) * F
+    if people:
+        people = sorted(people.items(), key = lambda x: x[0])
+        for person, pay in people:
+            print('{} {}'.format(person, pay))
     else:
-    # 반납할 때
+        print(-1)
 
-name_sort = sorted(list(overdue))
+N, L, F = input().split()
+N, F = int(N), int(F)
+day, time = L.split('/')
+day = int(day)
+hour, minute = map(int, time.split(':'))
+deadline_time = day*24*60 + hour*60 + minute
+info = []
+for _ in range(N):
+    _str = input()
+    info.append(_str)
+
+solution(info, deadline_time, F)
