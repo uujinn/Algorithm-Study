@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(10 ** 6)
 
 def DFS(x):
     visit[x] = True
