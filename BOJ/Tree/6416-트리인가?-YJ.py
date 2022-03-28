@@ -28,7 +28,7 @@ for line in all_input:  # 한 줄 마다 check
         case_part += line
 
 
-print(cases)
+# print(cases)
 
 for case in range(len(cases)):
     edges = cases[case]
@@ -38,3 +38,8 @@ for case in range(len(cases)):
     parent = dict()
     child = dict()
     vertex = set()
+
+    for i in range(len(edges) // 2):
+        # (6, 8) (5, 3) (5, 2) (6, 4), (5, 6)
+        u, v = edges[i * 2], edges[i * 2 + 1]  # 여기서 (u, v) 뽑음
+        print(u, v)
