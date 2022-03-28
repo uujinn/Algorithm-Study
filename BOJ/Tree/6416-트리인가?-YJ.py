@@ -32,7 +32,7 @@ for line in all_input:  # 한 줄 마다 check
 
 for case in range(len(cases)):
     edges = cases[case]
-    print(edges)
+    # print(edges)
 
     # 트리 생성
     parent = dict()
@@ -53,5 +53,10 @@ for case in range(len(cases)):
         else:  # 없으면 새로 등록
             parent[v] = [u]
 
-    print(parent)
-    print(child)
+    # print(parent)
+    # print(child)
+    # 루트는 들어오는 간선이 존재하면 안됨 부모 dict 키에 있으면 안됨 -> 차집합
+    root = list(node - set(parent.keys()))
+
+    if len(root) != 1:
+        print(f'Case {case + 1} is a tree.')
