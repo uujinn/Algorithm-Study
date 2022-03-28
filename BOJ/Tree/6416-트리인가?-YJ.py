@@ -37,13 +37,13 @@ for case in range(len(cases)):
     # 트리 생성
     parent = dict()
     child = dict()
-    node = set()  # 중복 없이 모든 노드
+    nodes = set()  # 중복 없이 모든 노드
 
     for i in range(len(edges) // 2):
         # (6, 8) (5, 3) (5, 2) (6, 4), (5, 6)
         u, v = edges[i * 2], edges[i * 2 + 1]  # 여기서 (u, v) 뽑음
         # print(u, v)
-        node.update((u, v))
+        nodes.update((u, v))
         if u in child:  # u의 자식 노드들
             child[u].append(v)
         else:  # 없으면 새로 등록
@@ -56,7 +56,11 @@ for case in range(len(cases)):
     # print(parent)
     # print(child)
     # 루트는 들어오는 간선이 존재하면 안됨 부모 dict 키에 있으면 안됨 -> 차집합
-    root = list(node - set(parent.keys()))
+    root = list(nodes - set(parent.keys()))
 
-    if len(root) != 1:
-        print(f'Case {case + 1} is a tree.')
+    if len(root) != 1:  # 루트 여러개면 트리 아님
+        print(f'Case {case + 1} is not a tree.')
+
+    else:  # 그리고 또.. 들어오는 간선이 여러개면 안됨..
+        nodes = list(nodes)
+        visited = {n: False for n in nodes}
