@@ -1,3 +1,6 @@
+import sys 
+sys.setrecursionlimit(10**5)
+
 tree = []
 
 while True:
@@ -8,27 +11,26 @@ while True:
         break
 
 # 재귀
-
-
 def preTopost(l, r):
-    try:
-        root = pre[l]  # 루트 노드
-    except:
-        exit(0)
 
-    for i, val in enumerate(pre):
-        if root < val:  # 예시에서 98이 오른쪽 트리의 루트
-            r = i
-            # print(pre[r])
-            break
+    # 범위 벗어남
+    if l > r:
+        return
 
-    left = pre[l+1: r]
-    right = pre[r: len(pre)]
+    root = tree[l] # 루트
+    idx = l + 1 # 왼쪽 서브트리
 
-    print(left)
-    print(right)
+    # 서브트리 끝까지 검색
+    while idx <= r:
+        # 루트보다 크면 오른쪽 서브트리임 ex. 98
+        if root < tree[idx]:
+            break # 오른쪽 찾았으니깐 멈춤
+        idx += 1
+
+    # 왼쪽, 오른쪽 순서대로 탐색
+    preTopost(l+1, idx-1)
+    preTopost(idx, r)
+    print(root)
 
 
-pre = [50, 30, 24, 5, 28, 45, 98, 52, 60]
-
-print(preTopost(0, 1))
+preTopost(0, len(tree)-1)
