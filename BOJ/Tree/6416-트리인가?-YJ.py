@@ -37,9 +37,21 @@ for case in range(len(cases)):
     # 트리 생성
     parent = dict()
     child = dict()
-    vertex = set()
+    node = set()  # 중복 없이 모든 노드
 
     for i in range(len(edges) // 2):
         # (6, 8) (5, 3) (5, 2) (6, 4), (5, 6)
         u, v = edges[i * 2], edges[i * 2 + 1]  # 여기서 (u, v) 뽑음
-        print(u, v)
+        # print(u, v)
+        node.update((u, v))
+        if u in child:  # u의 자식 노드들
+            child[u].append(v)
+        else:  # 없으면 새로 등록
+            child[u] = [v]
+        if v in parent:  # v의 부모노드들
+            parent[v].append(u)
+        else:  # 없으면 새로 등록
+            parent[v] = [u]
+
+    print(parent)
+    print(child)
