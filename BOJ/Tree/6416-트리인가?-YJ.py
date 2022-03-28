@@ -1,3 +1,4 @@
+from collections import deque
 from sys import stdin
 
 # 인풋을 전부 다 받고 시행
@@ -62,5 +63,12 @@ for case in range(len(cases)):
         print(f'Case {case + 1} is not a tree.')
 
     else:  # 그리고 또.. 들어오는 간선이 여러개면 안됨..
-        nodes = list(nodes)
-        visited = {n: False for n in nodes}
+        for v in parent.values():
+            if len(v) > 1:
+                print(f'Case {case + 1} is not a tree.')
+                break
+            else:
+                print(f'Case {case + 1} is a tree.')
+                break
+
+    
