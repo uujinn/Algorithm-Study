@@ -29,7 +29,7 @@ def preTopost(l, r):
     # 왼쪽, 오른쪽 순서대로 탐색
     preTopost(l+1, divide-1)
     preTopost(divide, r)
-    print(divide[l])
+    print(tree[l])
 
 
 preTopost(0, len(tree)-1)
