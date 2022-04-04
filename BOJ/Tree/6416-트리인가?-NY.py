@@ -1,6 +1,7 @@
 from sys import stdin
 case = 1
 lines = []
+cases = []
 temp = ""
 while True:
     temp += stdin.readline().rstrip()
@@ -13,7 +14,17 @@ while True:
     else: temp += "  "
 
 for line in lines:
-    u_vs = list(map(str, line.split("  ")))
+    temp_idx = 0
+    for idx, l in enumerate(line):
+        if l == '0' and line[idx-2] == '0':
+            cases.append(line[temp_idx:idx+1])
+            temp_idx = idx+1
+
+for c in cases:
+    try:
+        u_vs = list(map(str, c.strip().split("  ")))
+    except:
+        u_vs = list(c.strip())
     tree = {}
     v_flag = {}
     result = True
