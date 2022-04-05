@@ -1,14 +1,18 @@
+import math
+
+def isPrime(x):
+    for i in range(2, int(math.sqrt(x)) + 1):
+        if x % i == 0:
+            return False
+    return True
+
+
 def solution(n):
-    arr = []
+    prime_arr = []
         
-    for i in range(2, n + 1):
-        if i in arr:
-            continue
-        
-        for j in range(2 * i, n + 1, i):
-            if i in arr:    continue
-            else:           arr.append(j)    
-        
-    return (n - 1) - len(set(arr))
+    for i in range(2, n + 1):        
+        if isPrime(i):
+            prime_arr.append(i)
+    return len(prime_arr)
 
 print(solution(5))
