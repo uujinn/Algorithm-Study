@@ -29,7 +29,7 @@ for c in cases:
     v_flag = {}
     result = True
     
-    for u_v in u_vs[:-1]:
+    for u_v in u_vs:
         u, v = u_v.split()
         if v in v_flag: #이미 다른 u에서 v로 들어오는 간선이 있는데 또 새로 들어갈 경우
             result = False
