@@ -11,7 +11,7 @@ for _ in range(N-1):
     tree[a][b] = w
     tree[b][a] = w
 
-# maxbranch...를 찾아봐요...
+# maxBranch...를 찾아봐요...
 
 # 기가 노드까지 길이 찾기
 gigaNode = R
