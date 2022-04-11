@@ -1,32 +1,28 @@
-from email.policy import default
+from collections import defaultdict
 from sys import stdin
-
-
-def dfs(x):
-    visited[x] = True
-    for y in tree[x]:
-        if visited[y] == False:
-            dfs(y)
 
 
 T = int(stdin.readline().rstrip())
 for _ in range(T):
     N = int(stdin.readline().rstrip())
-    tree = [[] for _ in range(N+1)]
-    visited = [False for _ in range(N+1)]
-    depth = [0 for _ in range(N+1)]
-    root = 0
-    for i in range(N+1):
-        if i == N:
-            x, y = map(int, stdin.readline().rstrip().split())
+    tree = defaultdict(list)
+    x = y = 0
+    for i in range(N):
+        if i == N-1:
+            x, y = list(map(int, stdin.readline().rstrip().split()))
         else:
             parent, child = map(int, stdin.readline().rstrip().split())
-            tree[child].extend([parent])
+            tree[child] = parent
 
-    for idx, l in enumerate(tree):
-        if l == [] and idx != 0:
-            root = idx  # 루트 노드는 부모가 없음
-            print(root)
+    x_roots = []
+    while x in tree:
+        x_roots.append(x)
+        x = tree[x]
+
+    # 겹치는 부모 노드 있는지 확인
+    while y in tree:
+        if y in x_roots:
             break
+        y = tree[y]
 
-    dfs(root)
+    print(y)
