@@ -4,11 +4,16 @@ def solution(s, n):
         if alpha == ' ':
             answer += alpha
             # continue
-        elif 97 <= ord(alpha) < 122 or 65 <= ord(alpha) < 90:
-            answer += chr(ord(alpha) + n)
-        # elif ord(alpha) + n >= ord('z') or ord(alpha) + n >= ord('Z'):
-        #     answer += chr(ord(alpha) + n - 26)
-            # continue
+        elif 65 <= ord(alpha) < 90:
+            plus = ord(alpha) + n
+            if plus > 90:
+                plus -= 26
+            answer += chr(plus)
+        elif 97 <= ord(alpha) < 122:
+            plus = ord(alpha) + n
+            if plus > 122:
+                plus -= 26
+            answer += chr(plus)
         else:
             answer += chr(ord(alpha) + n - 26)
     return answer
@@ -16,8 +21,5 @@ def solution(s, n):
 
 # print(solution("AaZz", 25))  # ZzYy
 # print(solution("a    b", 1))  # b    c
-print(solution("a b ", 1))  # b c
-print(ord('a'))
-print(ord('z'))
-print(ord('A'))
-print(ord('Z'))
+# print(solution("a b ", 1))  # b c
+print(solution("a", 4))  # e F d
