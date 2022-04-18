@@ -20,8 +20,8 @@ root_arr = []
 for _ in range(N):
     node, left, right = map(int, stdin.readline().rstrip().split())
     root_arr[int(node)] += 1
-    root_arr[int(left)] += 1
-    root_arr[int(right)] += 1
+    # root_arr[int(left)] += 1
+    # root_arr[int(right)] += 1
     tree[node] = [left, right]
 
 root_node = root_arr.index(1)
