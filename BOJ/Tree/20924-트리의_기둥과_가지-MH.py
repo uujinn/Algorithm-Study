@@ -1,35 +1,46 @@
-from sys import stdin
+from sys import stdin, setrecursionlimit
+from collections import defaultdict
+setrecursionlimit(10 ** 6)
+
+def getMaxBranch(tree, root):
+    if root not in tree:
+        return 0
+    
+    max_branch = 0
+    for node, d in tree[root].items():        
+        del tree[node][root]
+        branch = d + getMaxBranch(tree, node)
+        
+        if branch > max_branch:
+            max_branch = branch
+    return max_branch
+
 
 N, R = map(int, stdin.readline().split())
-tree = [[] for _ in range(N + 1)]
-distance = {}
+tree = defaultdict(dict)
 
 for _ in range(N - 1):
     a, b, d = map(int, stdin.readline().split())
-    tree[a].append(b)           # 연결된 노드 저장
-    tree[b].append(a)
-    distance[(a, b)] = d        # 간선 길이 저장
-    distance[(b, a)] = d
+    tree[a][b] = d
+    tree[b][a] = d
 
-print(tree)
-print(distance)
+# print(tree)
+# {1: {2: 1}, 2: {1: 1, 3: 2}, 3: {2: 2, 4: 3}, 4: {3: 3, 5: 1, 9: 2, 10: 3},
+# 5: {4: 1, 6: 2, 8: 1}, 6: {5: 2, 7: 1}, 7: {6: 1}, 8: {5: 1}, 9: {4: 2},
+# 10: {4: 3, 11: 1, 12: 3}, 11: {10: 1}, 12: {10: 3}})
+# node 1은 node 2와 1 거리로 연결
+# dnoe 2는 node 1과 1 거리로 연결, node 3과 2 거리로 연결 ...
 
-pole_dist = 0
-def getPoleDist(n):
-    global pole_dist
+# 나무의 기둥의 거리
+giga_node, pole_len = R, 0
+while len(tree[giga_node]) == 1:
+    node, d = list(tree[giga_node].items())[0]
     
-    if len(tree[n]) > 2:     # 기가 노드는 연결된 노드가 
-        return
-    
-    print(n)
-    print(tree[n])
-    print(tree[n][0])
-    
-    pole_dist += distance[(n, tree[n][0])]
-    getPoleDist(tree[n][0])
-    
-    print('---')
+    del tree[node][giga_node]
+    pole_len += d
+    giga_node = node
 
-getPoleDist(R)                  # 루트 노드부터 기둥의 길이 찾음
+# 가장 긴 가지의 길이
+max_branch = getMaxBranch(tree, giga_node)
 
-print(pole_dist)
+print('{} {}'.format(pole_len, max_branch))
