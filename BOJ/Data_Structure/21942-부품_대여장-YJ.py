@@ -4,16 +4,26 @@ from sys import stdin
 from collections import defaultdict
 import math
 
+
 def getDateTime(day, time):
     year, month, day = map(int, day.split('-'))
     hour, min = map(int, time.split(':'))
-    return datetime(year, month, day, hour, min)
+    return datetime.datetime(year, month, day, hour, min)
 
-N, L, F = map(str, stdin.readline().rstrip().split())
 
-period = timedelta(days=int(L[:3]), hours = int(L[4:6]), minutes=int(L[7:]))
+N, L, F = stdin.readline().rstrip().split()
+
+
+period = timedelta(days=int(L[:3]), hours=int(L[4:6]), minutes=int(L[7:]))
 dic, answer = defaultdict(dict), defaultdict(int)
-flag = True # 사용자 item 체크할 때 사용하는 flag
+
+
+def check_item(user, item):
+    for key in dic[user].keys():
+        if key == item and dic[user][item] != 0:
+            return True
+    return False
+
 
 for _ in range(int(N)):
     string = stdin.readline().rstrip().split()
@@ -21,25 +31,16 @@ for _ in range(int(N)):
     time = string[1]
     item = string[2]
     user = string[3]
-    
-    for key in dic[user].keys():
-        if key == item and dic[user][item] != 0:
-            flag = False # 기록 있으면 flag = True
-            break
-        flag = True
 
-    # print(flag)
-
-    if flag == True:  # 처음이면 dic에 기록하고 for 문 넘어감
+    if not check_item(user, item):
         dic[user][item] = (day, time)
-        print(dic)
         continue
-
     # print(dic)
 
     # 기록 있으면 이제 계산하기
     # 반납 - 대여 datetime
-    difference = getDateTime(day, time) - getDateTime(dic[user][item][0], dic[user][item][1])
+    difference = getDateTime(day, time) - \
+        getDateTime(dic[user][item][0], dic[user][item][1])
     min = (difference.total_seconds() - period.total_seconds()) / 60
 
     # 벌금 계산
@@ -48,7 +49,7 @@ for _ in range(int(N)):
     dic[user][item] = 0
 
 if answer:
-    for user in sorted(answer.keys()): # 사전 순
+    for user in sorted(answer.keys()):  # 사전 순
         print(user, answer[user])
 else:
     print(-1)
