@@ -1,5 +1,4 @@
 def solution(n):
-    answer = [i for i in str(n)[::-1]]
-    return answer
+    return [int(i) for i in str(n)[::-1]]
 
 print(solution(12345))
