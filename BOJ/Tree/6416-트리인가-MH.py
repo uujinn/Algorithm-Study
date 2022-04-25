@@ -7,7 +7,7 @@ from sys import stdin
 
 def isTree(temp):                   # 입력받은 값으로 간선 이은 list 생성
     vertices = []
-    link_count = 0
+    root_count, link_count = 0, 0
     tree = [[] for _ in range(max(temp) + 1)]
 
     for i in range(0, len(temp) - 3, 2):    # 0 0 값 제외하고 리스트에 추가
@@ -15,19 +15,21 @@ def isTree(temp):                   # 입력받은 값으로 간선 이은 list 
         vertices.append(temp[i + 1])
         link_count += 1
         tree[temp[i]].append(temp[i + 1])
-        
-    # [[], [], [], [], [], [3, 2, 6], [8, 4], [], [], [], [], []]
+    # tree : [[], [], [], [], [], [3, 2, 6], [8, 4], [], [], [], [], []]
     # 5에서 나간 간선이 3, 2, 6으로 들어감
     # 6에서 나간 간선이 8, 4로 들어감
     
     vertices = set(vertices)
+    # vertices : {2, 3, 4, 5, 6, 8}
     
-    if (len(vertices) == 0):
-        return True
-    elif (len(vertices) - 1 == link_count):
-        return True
-    else:
+    # 4. 비어있어도 tree
+    if len(vertices) == 0:
+        return True    
+    
+    # 3. root에서 다른 노드로 가는 경로는 유일함
+    if len(vertices) - 1 != link_count:
         return False
+    return True
 
 
 case_count = 1
@@ -43,7 +45,6 @@ while True:
         else:
             print('Case ' + str(case_count) + ' is not a tree.')
             
-        # visited = [False for _ in range(max(trees[case_count]) + 1)]        # len - 2
         
         case_count += 1
         trees.append([])
