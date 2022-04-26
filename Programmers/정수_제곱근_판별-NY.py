@@ -1,8 +1,3 @@
-
-2
-3
-4
-5
 from math import sqrt
 def solution(n):
     if sqrt(n) - float(round(sqrt(n))) != 0: return -1
