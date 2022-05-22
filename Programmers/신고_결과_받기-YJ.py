@@ -3,25 +3,31 @@ from collections import defaultdict, Counter
 
 def solution(id_list, report, k):
     answer = []
-    answer_dict = defaultdict()
+    report = set(report)
 
-    report_dict = defaultdict()
-    report_list = []
+    mail_count = defaultdict(int)
+    user_db = defaultdict(int)
+    for id in id_list:
+        mail_count[id] = 0
+        user_db[id] = 0
+
+    report_db = defaultdict(list)
 
     for r in report:
         r = r.split()
-        report_list.append((r[0], r[1]))
-        report_dict[r[0]] = r[1]
+        report_db[r[1]].append(r[0])
 
-    counter = Counter(report_dict.values())
-    print(counter)
-    for id in id_list:
-        if counter[id] >= k:
-            answer.append(id)
+    for u in user_db:
+        user_db[u] = len(report_db[u])
+        pass
 
-    for r in report_list:
-        if r[1] in answer:
-            answer_dict[r[0]] = r[1]
+    for u in user_db:
+        if user_db[u] >= k:
+            for v in report_db[u]:
+                mail_count[v] += 1
+
+    for mail in mail_count:
+        answer.append(mail_count[mail])
 
     return answer
 
