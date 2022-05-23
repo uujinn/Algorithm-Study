@@ -19,8 +19,8 @@ for i in range(2, 37):
 
         if A_ten == B_ten:
             X = A_ten
-            A_i = i
-            B_j = j
+            A_i = i  # i진수
+            B_j = j  # j진수
             cnt += 1
             if cnt > 1:  # Multiple
                 break
