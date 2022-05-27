@@ -13,7 +13,10 @@ def is_sosu(n):
 
 
 while True:
-    if is_sosu(N) and list(str(N)) == list(reversed(str(N))):
-        print(N)
-        break
+    if list(str(N)) == list(reversed(str(N))):
+        if is_sosu(N):
+            print(N)
+            break
+    else:
+        pass
     N += 1
