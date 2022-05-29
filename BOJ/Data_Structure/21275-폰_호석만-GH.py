@@ -16,7 +16,7 @@ for i in range(2, 36 + 1):
     for j in range(2, 36 + 1):
         try:
             b_ = int(B, j)
-            if a_ == b_ and i != j:
+            if a_ == b_:
                 count += 1
                 x = a_
                 a = i
