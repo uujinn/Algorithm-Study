@@ -17,7 +17,7 @@ for i in range(2, 37):
         except:
             continue
 
-        if A_ten == B_ten:
+        if A_ten == B_ten and i != j:
             X = A_ten
             A_i = i  # i진수
             B_j = j  # j진수
