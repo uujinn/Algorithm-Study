@@ -1,14 +1,12 @@
-import sys
-sys.setrecursionlimit(10**6)
-def f(n):
-    if n in [0,1,2,4,7]: return -1
-    if n==3 or n==5: return 1
-    else: 
-        a = f(n-3)
-        b = f(n-5)
-        if a < 0: a = b
-        if b < 0: b = a
-        return min(a+1, b+1)
-    
 N = int(input())
-print(f(N))
+dp = [0] * (N+1)
+for i in range(3, N+1):
+    if i in [4, 7]: continue
+    elif i==3: dp[i] = 1
+    elif i >= 5: 
+        a = dp[i-3]
+        b = dp[i-5]
+        if a == 0: a=b
+        if b == 0: b=a
+        dp[i] = min(a+1, b+1)
+print(-1 if dp[N]==0 else dp[N])
