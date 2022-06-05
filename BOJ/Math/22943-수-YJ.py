@@ -1,48 +1,50 @@
-import sys
 import math
-from itertools import combinations_with_replacement, permutations
-from itertools import combinations
+from itertools import permutations
+MAX = 1000001
+is_prime = [True] * MAX
 
 
-def is_prime(n):
-    if n == 0 or n == 1:
-        return False
-    for i in range(2, int(math.sqrt(n))+1):
-        if n % i == 0:
-            return False
-    return True
-
-
-def check_sum_prime(n):  # 소수 합인지
-    for i, j in combinations(primes, 2):
-        if i + j == n:
+def check_sum_prime(n):
+    for i in range(2, n // 2 + 1):
+        if i != n - i and is_prime[i] and is_prime[n - i]:
             return True
     return False
 
 
-def check_multiple_prime(n, m):  # 최대한 나누었을 때 소수 곱인지
-    tmp = n
-    while (tmp // m) == 0:
-        n //= m
-    for i, j in combinations_with_replacement(primes, 2):
-        if n == i * j:
+def sub_multiple(num, k):
+    if num < k:
+        return num
+    while 1:
+        if(num % k != 0):
+            return num
+        num //= k
+    return num
+
+
+def check_multiple_prime(n, k):
+    result = sub_multiple(n, k)
+    for i in range(2, int(math.sqrt(result)) + 1):
+        if result % i == 0 and is_prime[i] and is_prime[result // i]:
             return True
     return False
 
 
-if __name__ == '__main__':
-    k, m = map(int, input().split())
-    numbers = list(range(10**(k-1), 10**k))  # 가능한 수
-    primes = []
-    cnt = 0
-    for n in numbers:
-        if is_prime(n):
-            primes.append(n)
-        else:
-            continue
+is_prime[0] = False
+is_prime[1] = False
+is_prime[2] = True
+for i in range(int(math.sqrt(MAX)) + 1):
+    if is_prime[i]:
+        for j in range(i*i, MAX, i):
+            is_prime[j] = False
 
-    for n in numbers:
-        if check_sum_prime(n) and check_multiple_prime(n, m):
-            cnt += 1
+K, M = map(int, input().split())
+ans = 0
+for num in permutations(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'], K):
+    if(num[0] == '0'):
+        continue
+    num = int(''.join(num))
+    if(check_sum_prime(num)):
+        if(check_multiple_prime(num, M)):
+            ans += 1
 
-    print(cnt)
+print(ans)
