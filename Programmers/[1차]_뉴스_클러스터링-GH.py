@@ -1,29 +1,14 @@
-def Intersection(A, B):
-    n = 0
-    for x in set(A):
-        if x in B:
-            n += min(A.count(x), B.count(x))
-    return n
-
-
 def solution(str1, str2):
-    answer = 0
+    str1 = [str1[i:i + 2].lower() for i in range(len(str1) - 1) if str1[i:i + 2].isalpha()]
+    str2 = [str2[i:i + 2].lower() for i in range(len(str2) - 1) if str2[i:i + 2].isalpha()]
 
-    str1 = str1.lower()
-    str2 = str2.lower()
-    A, B = [], []
-    for i in range(len(str1) - 1):
+    intersection = set(str1) & set(str2)
+    union = set(str1) | set(str2)
 
-        if str1[i].isalpha() and str1[i + 1].isalpha():
-            A.append(str1[i] + str1[i + 1])
-    for i in range(len(str2) - 1):
-        if str2[i].isalpha() and str2[i + 1].isalpha():
-            B.append(str2[i] + str2[i + 1])
+    inter = sum([min(str1.count(word), str2.count(word)) for word in intersection])
+    uni = sum([max(str1.count(word), str2.count(word)) for word in union])
 
-    if (not A) and (not B):
+    if uni == 0:
         return 65536
 
-    n = Intersection(A, B) if len(A) < len(B) else Intersection(B, A)
-    answer = n / (len(A) + len(B) - n)
-
-    return int(answer*65536)
+    return int(inter / uni * 65536)
