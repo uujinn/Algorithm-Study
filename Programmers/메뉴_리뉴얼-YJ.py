@@ -4,20 +4,18 @@ from collections import Counter
 
 def solution(orders, course):
     answer = []
-    combs = []
-    for order in orders:
-        for i in course:
-            comb = combinations(order, i)
+    for co in course:
+        combs = []
+        for i in orders:
+            comb = combinations(i, co)
             for c in comb:
-                combs.append(''.join(c))
+                combs.append(''.join(sorted(c)))
 
-    counter = Counter(combs)
+        counter = Counter(combs).most_common()
+        answer += [menu for menu, cnt in counter if cnt >
+                   1 and cnt == counter[0][1]]
 
-    for (key, value) in counter.items():
-        if value >= 2:
-            answer.append(key)
-
-    return sorted(list(set(answer) & (set(orders))))
+    return sorted(answer)
 
 
 print(solution(["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"], [2, 3, 4]))
