@@ -1,13 +1,12 @@
+from collections import defaultdict
 from itertools import combinations
 
 
 def solution(phone_book):
+    phone_dict = defaultdict()
 
-    phone_book.sort()
-    for comb in combinations(phone_book, 2):
-        p1, p2 = comb
-        if p2.startswith(p1):
-            return False
+    for p in phone_book:
+        phone_dict[phone_dict] = 1
     return True
 
 
