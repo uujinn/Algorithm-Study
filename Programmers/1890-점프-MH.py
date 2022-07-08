@@ -1,47 +1,20 @@
-from sys import stdin, setrecursionlimit
-setrecursionlimit(10 ** 6)
-
-def game(y, x):
-    global count
-    
-    # print(y, end=', ')
-    # print(x, end=' : ')
-    # print(gamePan[y][x])
-    
-    if y == N - 1 and x == N - 1:
-        count += 1
-        # print('count : ', end='')
-        # print(count)
-        return
-    
-    if gamePan[y][x] == 0:
-        return
-    
-    try:
-        # print('right')
-        game(y, x + gamePan[y][x])
-    except:
-        # print('no right')
-        pass
-
-    
-    try:
-        # print('down')
-        game(y + gamePan[y][x], x)
-    except:
-        # print('no down')
-        pass
-    
-    return
-
+from calendar import c
+from sys import stdin
 
 N = int(stdin.readline())
-gamePan = [[] for _ in range(N)]
+gamePan = [list(map(int, stdin.readline().split())) for _ in range(N)]
+
+dp = [[0] * N for _ in range(N)]        # i, j까지 올 수 있는 경우의 수를 저장
+dp[0][0] = 1
 
 for i in range(N):
-    gamePan[i] = list(map(int, stdin.readline().split()))
-# print(gamePan)
-
-count = 0
-game(0, 0)
-print(count)
+    for j in range(N):
+        if i == N - 1 and j == N - 1:
+            print(dp[i][j])
+            break
+        
+        current = gamePan[i][j]
+        if j + current < N:
+            dp[i][j + current] += dp[i][j]
+        if i + current < N:
+            dp[i + current][j] += dp[i][j]
