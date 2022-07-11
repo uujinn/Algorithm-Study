@@ -12,7 +12,7 @@ def max_score(stickers, n):
                 else: continue
     for i in range(1, 3):
         for j in range(1, n+1):
-            if not stickers[i][j]: answer += stickers[i][j]
+            answer += stickers[i][j]
     return answer
 
 T = int(stdin.readline())
